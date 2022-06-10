@@ -1,32 +1,37 @@
 package com.northwind.northwind.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Table(name = "Products")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ProductID")
     private int product_id;
 
-    @Column(name = "ProductName")
-    private String product_name;
+    @Column(name = "productname")
+    private String productName;
 
     //Many to one
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "SupplierID")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "products"})
     private Supplier supplier;
 
     //Many to one
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "CategoryID")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "products"})
     private Category category;
 
     @Column(name = "Unit")
@@ -46,12 +51,12 @@ public class Product {
         this.product_id = product_id;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public Supplier getSupplier() {

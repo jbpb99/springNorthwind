@@ -16,11 +16,11 @@ public class Customer {
     @Column(name = "CustomerID")
     private int customer_id;
 
-    @Column(name = "CustomerName")
-    private String customer_name;
+    @Column(name = "customername")
+    private String customerName;
 
-    @Column(name = "ContactName")
-    private String contact_name;
+    @Column(name = "contactname")
+    private String contactName;
 
     @Column(name = "Address")
     private String address;
@@ -28,8 +28,8 @@ public class Customer {
     @Column(name = "City")
     private String city;
 
-    @Column(name = "PostalCode")
-    private String postal_code;
+    @Column(name = "postalcode")
+    private String postalCode;
 
     @Column(name = "Country")
     private String country;
@@ -46,20 +46,20 @@ public class Customer {
         this.customer_id = customer_id;
     }
 
-    public String getCustomer_name() {
-        return customer_name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCustomer_name(String customer_name) {
-        this.customer_name = customer_name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public String getContact_name() {
-        return contact_name;
+    public String getContactName() {
+        return contactName;
     }
 
-    public void setContact_name(String contact_name) {
-        this.contact_name = contact_name;
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 
     public String getAddress() {
@@ -78,12 +78,12 @@ public class Customer {
         this.city = city;
     }
 
-    public String getPostal_code() {
-        return postal_code;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setPostal_code(String postal_code) {
-        this.postal_code = postal_code;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getCountry() {

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,20 +12,20 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employee {
+public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "EmployeeID")
     private int employee_id;
 
-    @Column(name = "LastName")
-    private String last_name;
+    @Column(name = "lastname")
+    private String lastName;
 
-    @Column(name = "FirstName")
-    private String first_name;
+    @Column(name = "firstname")
+    private String firstName;
 
-    @Column(name = "BirthDate")
-    private LocalDateTime birthdate;
+    @Column(name = "birthdate")
+    private LocalDateTime birthDate;
 
     @Column(name = "Photo")
     private String photo;
@@ -44,28 +45,28 @@ public class Employee {
         this.employee_id = employee_id;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public LocalDateTime getBirthdate() {
-        return birthdate;
+    public LocalDateTime getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthdate(LocalDateTime birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthDate(LocalDateTime birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getPhoto() {

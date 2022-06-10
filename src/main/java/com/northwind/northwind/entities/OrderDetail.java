@@ -1,39 +1,43 @@
 package com.northwind.northwind.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-@Table(name = "OrderDetails")
+@Table(name = "orderdetails")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDetail {
+public class OrderDetail implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "OrderDetailID")
-    private int order_detail_id;
+    @Column(name = "orderdetailid")
+    private int orderDetailId;
 
     //Many to one
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "OrderID")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "orderDetails"})
     private Order order;
 
     //Many to one
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "ProductID")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "orderDetails"})
     private Product product;
 
     @Column(name = "Quantity")
     private int quantity;
 
-    public int getOrder_detail_id() {
-        return order_detail_id;
+    public int getOrderDetailId() {
+        return orderDetailId;
     }
 
-    public void setOrder_detail_id(int order_detail_id) {
-        this.order_detail_id = order_detail_id;
+    public void setOrderDetailId(int orderDetailId) {
+        this.orderDetailId = orderDetailId;
     }
 
     public Order getOrder() {

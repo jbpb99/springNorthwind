@@ -16,8 +16,8 @@ public class Shipper {
     @Column(name = "ShipperID")
     private int shipper_id;
 
-    @Column(name = "ShipperName")
-    private String shipper_name;
+    @Column(name = "shippername")
+    private String shipperName;
 
     @Column(name = "Phone")
     private String phone;
@@ -34,12 +34,12 @@ public class Shipper {
         this.shipper_id = shipper_id;
     }
 
-    public String getShipper_name() {
-        return shipper_name;
+    public String getShipperName() {
+        return shipperName;
     }
 
-    public void setShipper_name(String shipper_name) {
-        this.shipper_name = shipper_name;
+    public void setShipperName(String shipperName) {
+        this.shipperName = shipperName;
     }
 
     public String getPhone() {

@@ -1,5 +1,6 @@
 package com.northwind.northwind.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -20,19 +21,22 @@ public class Order {
     //Many to one
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "CustomerID")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "orders"})
     private Customer customer;
 
     //Many to one
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "EmployeeID")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "orders"})
     private Employee employee;
 
-    @Column(name = "OrderDate")
-    private LocalDateTime order_date;
+    @Column(name = "orderdate")
+    private LocalDateTime orderDate;
 
     //Many to one
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "ShipperID")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "orders"})
     private Shipper shipper;
 
     @OneToMany(mappedBy = "order")
@@ -62,12 +66,12 @@ public class Order {
         this.employee = employee;
     }
 
-    public LocalDateTime getOrder_date() {
-        return order_date;
+    public LocalDateTime getOrderDate() {
+        return orderDate;
     }
 
-    public void setOrder_date(LocalDateTime order_date) {
-        this.order_date = order_date;
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
     }
 
     public Shipper getShipper() {
