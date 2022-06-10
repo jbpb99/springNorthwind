@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Category implements Serializable {
+    /*Se necesita sincronizar el JPA Hibernate con el SERIAL de la BD*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CategoryID")
