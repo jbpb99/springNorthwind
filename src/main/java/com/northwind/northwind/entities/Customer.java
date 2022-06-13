@@ -2,6 +2,7 @@ package com.northwind.northwind.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,8 +14,8 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CustomerID")
-    private int customer_id;
+    @Column(name = "customerid", unique = true)
+    private Integer customer_id;
 
     @Column(name = "customername")
     private String customerName;
@@ -35,14 +36,14 @@ public class Customer {
     private String country;
 
     //List to get all the orders by customer
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
     private List<Order> orders;
 
-    public int getCustomer_id() {
+    public Integer getCustomer_id() {
         return customer_id;
     }
 
-    public void setCustomer_id(int customer_id) {
+    public void setCustomer_id(Integer customer_id) {
         this.customer_id = customer_id;
     }
 

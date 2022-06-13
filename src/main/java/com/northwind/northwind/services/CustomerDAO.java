@@ -19,8 +19,11 @@ public interface CustomerDAO {
     Category deleteById(int id);
 
     //New post
-    List<Customer> saveAndFlush(Category customer);
+    List<Customer> saveAndFlush(Customer customer);
 
     //Update
-    //List<Customer> updateCustomer(Customer customer);
+    //Optional<Category> updateCategory(Category category, int id);
+
+    //Update
+    Customer updateCustomer(Customer customer, int id);
 }

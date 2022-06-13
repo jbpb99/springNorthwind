@@ -5,11 +5,11 @@ import com.northwind.northwind.entities.Customer;
 import com.northwind.northwind.services.CategoryDAO;
 import com.northwind.northwind.services.CustomerDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,6 +47,32 @@ public class CustomerController {
             return customer;
         }
         return null;
+    }
+
+    //Post
+    @PostMapping
+    @RequestMapping("/post")
+    public Customer saveCustomer(@RequestBody Customer customerBody) {
+        customerDAO.saveAndFlush(customerBody);
+
+        return customerBody;
+    }
+
+    //Delete
+    @RequestMapping("/delete/{id}")
+    public Customer deleteCustomer(@PathVariable int id) {
+        customerDAO.deleteById(id);
+
+        return null;
+    }
+
+    //Update
+    @PutMapping
+    @RequestMapping("/update/{id}")
+    public Customer updateCustomer(@RequestBody Customer customerBody, @PathVariable int id) {
+        customerDAO.saveAndFlush(customerBody);
+
+        return customerBody;
     }
 
 

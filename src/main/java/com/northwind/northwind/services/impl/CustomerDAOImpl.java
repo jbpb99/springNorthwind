@@ -16,24 +16,40 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Autowired
     private CustomerRepository customerRepository;
 
+    //Get
     @Override
     @Transactional(readOnly = true)
     public List<Customer> findAll() {
         return (List<Customer>) customerRepository.findAll();
     }
 
+    //Get by ID
     @Override
     public Optional<Customer> findById(int id) {
         return (Optional<Customer>) customerRepository.findById(id);
     }
 
+
     @Override
     public Category deleteById(int id) {
+        customerRepository.deleteById(id);
+
         return null;
     }
 
+    //Post
     @Override
-    public List<Customer> saveAndFlush(Category category) {
+    public List<Customer> saveAndFlush(Customer customer) {
+        customerRepository.saveAndFlush(customer);
+
+        return null;
+    }
+
+    //Update
+    @Override
+    public Customer updateCustomer(Customer customer, int id) {
+        customerRepository.saveAndFlush(customer);
+
         return null;
     }
 
