@@ -18,4 +18,7 @@ public interface CategoryDAO {
     Category deleteById(int id);
 
     List<Category> saveAndFlush(Category category);
+
+    //Update
+    Optional<Category> updateCategory(Category category, int id);
 }

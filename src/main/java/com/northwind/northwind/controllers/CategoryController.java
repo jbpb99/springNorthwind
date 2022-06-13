@@ -62,4 +62,12 @@ public class CategoryController {
 
         return null;
     }
+
+    //Update
+    @PutMapping
+    @RequestMapping("/update/{id}")
+    public Category updateCategory(@RequestBody Category categoryBody, @PathVariable int id) {
+        categoryDAO.saveAndFlush(categoryBody);
+        return categoryBody;
+    }
 }

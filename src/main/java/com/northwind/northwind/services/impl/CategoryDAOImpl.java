@@ -2,7 +2,6 @@ package com.northwind.northwind.services.impl;
 
 import com.northwind.northwind.entities.Category;
 import com.northwind.northwind.repositories.CategoryRepository;
-import com.northwind.northwind.repositories.SaveFlushRepository;
 import com.northwind.northwind.services.CategoryDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +36,13 @@ public class CategoryDAOImpl implements CategoryDAO {
     @Override
     public Category deleteById(int id){
         categoryRepository.deleteById(id);
+
+        return null;
+    }
+
+    @Override
+    public Optional<Category> updateCategory(Category category, int id) {
+        categoryRepository.saveAndFlush(category);
 
         return null;
     }
