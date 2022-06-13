@@ -12,8 +12,10 @@ public interface CategoryDAO {
     Optional<Category> findById(int id);
 
     //Post
-    List<Category> save(Category category);
+    //List<Category> save(Category category);
 
     //Delete
     Category deleteById(int id);
+
+    List<Category> saveAndFlush(Category category);
 }

@@ -18,6 +18,7 @@ public class Category implements Serializable {
     @Column(name = "CategoryID")
     private Integer category_id;
 
+
     @Column(name = "categoryname")
     private String categoryName;
 

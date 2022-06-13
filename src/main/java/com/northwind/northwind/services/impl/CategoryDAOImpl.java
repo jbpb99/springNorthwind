@@ -2,6 +2,7 @@ package com.northwind.northwind.services.impl;
 
 import com.northwind.northwind.entities.Category;
 import com.northwind.northwind.repositories.CategoryRepository;
+import com.northwind.northwind.repositories.SaveFlushRepository;
 import com.northwind.northwind.services.CategoryDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,8 @@ public class CategoryDAOImpl implements CategoryDAO {
         return (Optional<Category>) categoryRepository.findById(id);
     }
     //Post
-    public List<Category> save(Category category) {
-        categoryRepository.save(category);
+    public List<Category> saveAndFlush(Category category) {
+        categoryRepository.saveAndFlush(category);
 
         return null;
     }
@@ -39,6 +40,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 
         return null;
     }
+
 
 
 }

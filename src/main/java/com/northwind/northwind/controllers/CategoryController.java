@@ -50,7 +50,7 @@ public class CategoryController {
     @PostMapping
     @RequestMapping("/post")
     public Category saveCategory(@RequestBody Category categoryBody) {
-        categoryDAO.save(categoryBody);
+        categoryDAO.saveAndFlush(categoryBody);
 
         return categoryBody;
     }
