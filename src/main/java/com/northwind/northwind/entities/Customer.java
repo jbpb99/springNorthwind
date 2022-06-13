@@ -22,16 +22,16 @@ public class Customer {
     @Column(name = "contactname")
     private String contactName;
 
-    @Column(name = "Address")
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "City")
+    @Column(name = "city")
     private String city;
 
     @Column(name = "postalcode")
     private String postalCode;
 
-    @Column(name = "Country")
+    @Column(name = "country")
     private String country;
 
     //List to get all the orders by customer
