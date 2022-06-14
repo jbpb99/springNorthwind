@@ -5,8 +5,6 @@ import com.northwind.northwind.entities.Category;
 import com.northwind.northwind.mapstruct.mappers.DTOMapper;
 import com.northwind.northwind.services.CategoryDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -48,16 +46,20 @@ public class CategoryController {
 
     //Get by ID
     @GetMapping("/get/{id}")
-    public Category getCatById(@PathVariable int id) {
+    public CategoryDto getCatById(@PathVariable int id) {
         Optional<Category> categories;
-        Category category;
+        CategoryDto categoryDtos;
+
+        //Category category;
 
         categories = categoryDAO.findById(id);
 
         if(categories.isPresent()) {
-            category = categories.get();
+            categoryDtos = dtoMapper.categoryDto(categories.get());
 
-            return category;
+            //category = categories.get();
+
+            return categoryDtos;
         }
 
         return null;

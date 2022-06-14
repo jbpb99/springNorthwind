@@ -1,5 +1,6 @@
 package com.northwind.northwind.controllers;
 
+import com.northwind.northwind.dto.CategoryDto;
 import com.northwind.northwind.dto.CustomerDto;
 import com.northwind.northwind.entities.Category;
 import com.northwind.northwind.entities.Customer;
@@ -46,16 +47,16 @@ public class CustomerController {
 
     //GetbyID
     @RequestMapping("/get/{id}")
-    public Customer getCustomerById(@PathVariable int id) {
+    public CustomerDto getCustomerById(@PathVariable int id) {
         Optional<Customer> customers;
-        Customer customer;
+        CustomerDto customerDto;
 
         customers = customerDAO.findById(id);
 
         if(customers.isPresent()) {
-            customer = customers.get();
+            customerDto = dtoMapper.customerDTO(customers.get());
 
-            return customer;
+            return customerDto;
         }
         return null;
     }
