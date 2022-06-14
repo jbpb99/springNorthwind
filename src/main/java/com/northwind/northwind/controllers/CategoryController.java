@@ -2,7 +2,7 @@ package com.northwind.northwind.controllers;
 
 import com.northwind.northwind.dto.CategoryDto;
 import com.northwind.northwind.entities.Category;
-import com.northwind.northwind.mapstruct.mappers.CategoryMapper;
+import com.northwind.northwind.mapstruct.mappers.DTOMapper;
 import com.northwind.northwind.services.CategoryDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,12 +20,12 @@ public class CategoryController {
     private final CategoryDAO categoryDAO;
 
     //Mapper for structured data
-    private CategoryMapper categoryMapper;
+    private DTOMapper dtoMapper;
 
     @Autowired
-    public CategoryController(CategoryDAO categoryDAO, CategoryMapper categoryMapper) {
+    public CategoryController(CategoryDAO categoryDAO, DTOMapper dtoMapper) {
         this.categoryDAO = categoryDAO;
-        this.categoryMapper = categoryMapper;
+        this.dtoMapper = dtoMapper;
     }
 
     //Get categories
@@ -37,7 +37,7 @@ public class CategoryController {
 
         categories = categoryDAO.findAll();
         categories.forEach(category -> {
-            categoryDtos.add(categoryMapper.categoryDto(category));
+            categoryDtos.add(dtoMapper.categoryDto(category));
         });
 
 

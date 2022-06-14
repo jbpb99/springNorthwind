@@ -1,7 +1,9 @@
 package com.northwind.northwind.controllers;
 
+import com.northwind.northwind.dto.CustomerDto;
 import com.northwind.northwind.entities.Category;
 import com.northwind.northwind.entities.Customer;
+import com.northwind.northwind.mapstruct.mappers.DTOMapper;
 import com.northwind.northwind.services.CategoryDAO;
 import com.northwind.northwind.services.CustomerDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,19 +21,27 @@ import java.util.Optional;
 public class CustomerController {
     private final CustomerDAO customerDAO;
 
+    private DTOMapper dtoMapper;
+
     @Autowired
-    public CustomerController(CustomerDAO customerDAO) {
+    public CustomerController(CustomerDAO customerDAO, DTOMapper dtoMapper) {
         this.customerDAO = customerDAO;
+        this.dtoMapper = dtoMapper;
     }
 
     //Get
     @GetMapping
     @RequestMapping("/get")
-    public List<Customer> getCustomers() {
+    public List<CustomerDto> getCustomers() {
         List<Customer> customers;
+        List<CustomerDto> customerDtos = new ArrayList<>();
 
         customers = customerDAO.findAll();
-        return customers;
+        customers.forEach(customer -> {
+            customerDtos.add(dtoMapper.customerDTO(customer));
+        });
+
+        return customerDtos;
     }
 
     //GetbyID
