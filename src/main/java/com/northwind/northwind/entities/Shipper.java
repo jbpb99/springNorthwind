@@ -1,5 +1,6 @@
 package com.northwind.northwind.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -24,6 +25,7 @@ public class Shipper {
 
     //list to bring the orders by shipper
     @OneToMany(mappedBy = "shipper")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "shipper"})
     private List<Order> orders;
 
     public int getShipper_id() {

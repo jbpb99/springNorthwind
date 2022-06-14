@@ -1,5 +1,6 @@
 package com.northwind.northwind.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -35,6 +36,7 @@ public class Employee implements Serializable {
 
     //List to bring the orders
     @OneToMany(mappedBy = "employee")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "employee"})
     private List<Order> orders;
 
     public int getEmployee_id() {

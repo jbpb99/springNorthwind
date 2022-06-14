@@ -1,5 +1,6 @@
 package com.northwind.northwind.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -26,6 +27,7 @@ public class Category implements Serializable {
     private String description;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "category", "orderDetails"})
     private List<Product> products;
 
     public Integer getCategory_id() {

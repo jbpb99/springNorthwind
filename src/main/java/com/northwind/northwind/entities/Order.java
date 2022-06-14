@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @Column(name = "OrderID")
     private int order_id;
 
@@ -40,6 +40,7 @@ public class Order {
     private Shipper shipper;
 
     @OneToMany(mappedBy = "order")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "order"})
     private List<OrderDetail> orderDetails;
 
     public int getOrder_id() {

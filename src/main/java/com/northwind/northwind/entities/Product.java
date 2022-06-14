@@ -41,6 +41,7 @@ public class Product implements Serializable {
     private String price;
 
     @OneToMany(mappedBy = "product")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "product"})
     private List<OrderDetail> orderDetails;
 
     public int getProduct_id() {

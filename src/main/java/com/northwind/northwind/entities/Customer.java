@@ -1,5 +1,6 @@
 package com.northwind.northwind.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.repository.Query;
@@ -37,6 +38,7 @@ public class Customer {
 
     //List to get all the orders by customer
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "customer"})
     private List<Order> orders;
 
     public Integer getCustomer_id() {
