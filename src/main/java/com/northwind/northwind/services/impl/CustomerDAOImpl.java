@@ -47,10 +47,28 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     //Update
     @Override
-    public Customer updateCustomer(Customer customer, int id) {
-        customerRepository.saveAndFlush(customer);
+    public Optional<Customer> updateCustomer(Customer customer, int id) {
+        Optional<Customer> customers = customerRepository.findById(id);
+        Customer customerobj;
 
-        return null;
+        if(customers.isPresent()) {
+            customerobj = customers.get();
+
+            customerobj.setCustomerName(customer.getCustomerName());
+            customerobj.setContactName(customer.getContactName());
+            customerobj.setAddress(customer.getAddress());
+            customerobj.setCity(customer.getCity());
+            customerobj.setPostalCode(customer.getPostalCode());
+            customerobj.setCountry(customer.getCountry());
+
+            customerRepository.saveAndFlush(customer);
+
+            return Optional.of(customerobj);
+        }
+
+
+
+        return Optional.empty();
     }
 
 

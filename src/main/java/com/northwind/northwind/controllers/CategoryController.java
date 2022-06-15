@@ -86,7 +86,13 @@ public class CategoryController {
     @PutMapping
     @RequestMapping("/update/{id}")
     public Category updateCategory(@RequestBody Category categoryBody, @PathVariable int id) {
-        categoryDAO.saveAndFlush(categoryBody);
-        return categoryBody;
+        Optional<Category> categorias = categoryDAO.updateCategory(categoryBody, id);
+
+        if(categorias.isPresent()) {
+            return categorias.get();
+        }
+
+
+        return null;
     }
 }

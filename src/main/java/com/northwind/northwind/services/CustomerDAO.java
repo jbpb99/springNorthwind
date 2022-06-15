@@ -25,5 +25,5 @@ public interface CustomerDAO {
     //Optional<Category> updateCategory(Category category, int id);
 
     //Update
-    Customer updateCustomer(Customer customer, int id);
+    Optional<Customer> updateCustomer(Customer customer, int id);
 }

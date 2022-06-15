@@ -82,9 +82,14 @@ public class CustomerController {
     @PutMapping
     @RequestMapping("/update/{id}")
     public Customer updateCustomer(@RequestBody Customer customerBody, @PathVariable int id) {
-        customerDAO.saveAndFlush(customerBody);
+        Optional<Customer> customer = customerDAO.updateCustomer(customerBody, id);
 
-        return customerBody;
+        if(customer.isPresent()) {
+            return customer.get();
+        }
+
+
+        return null;
     }
 
 
