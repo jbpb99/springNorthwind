@@ -1,13 +1,7 @@
 package com.northwind.northwind.mapstruct.mappers;
 
-import com.northwind.northwind.dto.OrderDetailDto;
-import com.northwind.northwind.dto.OrderDto;
-import com.northwind.northwind.dto.ProductDto;
-import com.northwind.northwind.dto.ShipperDto;
-import com.northwind.northwind.entities.Order;
-import com.northwind.northwind.entities.OrderDetail;
-import com.northwind.northwind.entities.Product;
-import com.northwind.northwind.entities.Shipper;
+import com.northwind.northwind.dto.*;
+import com.northwind.northwind.entities.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -65,6 +59,23 @@ public class DTOMapperClass {
         shipperDto.setPhone(shipper.getPhone());
 
         return shipperDto;
+    }
+
+    //Values that will be shown to user from Suppliers
+    public static SupplierDto supplierDto(Supplier supplier) {
+        SupplierDto supplierDto = new SupplierDto();
+
+        supplierDto.setSupplier_id(supplier.getSupplier_id());
+        supplierDto.setSupplierName(supplier.getSupplierName());
+        supplierDto.setSupplierName(supplier.getSupplierName());
+        supplierDto.setContactName(supplier.getContactName());
+        supplierDto.setAddress(supplier.getAddress());
+        supplierDto.setCity(supplier.getCity());
+        supplierDto.setPostalCode(supplier.getPostalCode());
+        supplierDto.setCountry(supplier.getCountry());
+        supplierDto.setPhone(supplier.getPhone());
+
+        return supplierDto;
     }
 
 }

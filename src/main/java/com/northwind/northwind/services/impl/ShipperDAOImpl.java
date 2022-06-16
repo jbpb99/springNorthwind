@@ -47,6 +47,8 @@ public class ShipperDAOImpl implements ShipperDAO {
             shipperObj.setShipperName(shipper.getShipperName());
             shipperObj.setPhone(shipper.getPhone());
 
+            shipperRepository.saveAndFlush(shipperObj);
+
             return Optional.of(shipperObj);
         }
 

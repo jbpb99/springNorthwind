@@ -4,10 +4,7 @@ import com.northwind.northwind.dto.ShipperDto;
 import com.northwind.northwind.entities.Shipper;
 import com.northwind.northwind.mapstruct.mappers.DTOMapperClass;
 import com.northwind.northwind.services.ShipperDAO;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,4 +49,31 @@ public class ShipperController {
     }
 
     //Post
+    @PostMapping
+    @RequestMapping("/post")
+    public Shipper saveShipper(@RequestBody Shipper shipperBody) {
+        shipperDAO.saveAndFlush(shipperBody);
+
+        return shipperBody;
+    }
+
+    @DeleteMapping
+    @RequestMapping("/delete/{id}")
+    public void deleteShipper(@PathVariable int id) {
+        shipperDAO.deleteById(id);
+    }
+
+    @PutMapping
+    @RequestMapping("/update/{id}")
+    public ShipperDto updateShipper(@RequestBody Shipper shipperBody, @PathVariable int id) {
+        Optional<Shipper> shippers = shipperDAO.updateShipper(shipperBody, id);
+        ShipperDto shipperDto;
+
+        if(shippers.isPresent()) {
+            shipperDto = DTOMapperClass.shipperDto(shippers.get());
+
+            return shipperDto;
+        }
+        return null;
+    }
 }
