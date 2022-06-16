@@ -3,6 +3,7 @@ package com.northwind.northwind.controllers;
 import com.northwind.northwind.dto.CategoryDto;
 import com.northwind.northwind.entities.Category;
 import com.northwind.northwind.mapstruct.mappers.DTOMapper;
+import com.northwind.northwind.mapstruct.mappers.DTOMapperClass;
 import com.northwind.northwind.services.CategoryDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -85,11 +86,14 @@ public class CategoryController {
     //Update
     @PutMapping
     @RequestMapping("/update/{id}")
-    public Category updateCategory(@RequestBody Category categoryBody, @PathVariable int id) {
+    public CategoryDto updateCategory(@RequestBody Category categoryBody, @PathVariable int id) {
         Optional<Category> categorias = categoryDAO.updateCategory(categoryBody, id);
+        CategoryDto categoryDto;
 
         if(categorias.isPresent()) {
-            return categorias.get();
+            categoryDto = dtoMapper.categoryDto(categorias.get());
+
+            return categoryDto;
         }
 
 

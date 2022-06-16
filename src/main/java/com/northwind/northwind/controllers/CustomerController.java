@@ -81,11 +81,14 @@ public class CustomerController {
     //Update
     @PutMapping
     @RequestMapping("/update/{id}")
-    public Customer updateCustomer(@RequestBody Customer customerBody, @PathVariable int id) {
+    public CustomerDto updateCustomer(@RequestBody Customer customerBody, @PathVariable int id) {
         Optional<Customer> customer = customerDAO.updateCustomer(customerBody, id);
+        CustomerDto customerDto;
 
         if(customer.isPresent()) {
-            return customer.get();
+            customerDto = dtoMapper.customerDTO(customer.get());
+
+            return customerDto;
         }
 
 

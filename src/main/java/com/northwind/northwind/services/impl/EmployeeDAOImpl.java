@@ -15,17 +15,20 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    //Get
     @Override
     @Transactional(readOnly = true)
     public List<Employee> findAll() {
         return (List<Employee>) employeeRepository.findAll();
     }
 
+    //Get by ID
     @Override
     public Optional<Employee> findById(int id) {
         return (Optional<Employee>) employeeRepository.findById(id);
     }
 
+    //Delete
     @Override
     public Employee deleteById(int id) {
         employeeRepository.deleteById(id);
@@ -33,6 +36,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return null;
     }
 
+    //Post
     @Override
     public List<Employee> saveAndFlush(Employee employee) {
         employeeRepository.saveAndFlush(employee);
@@ -40,9 +44,26 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return null;
     }
 
+    //Put
     @Override
     public Optional<Employee> updateEmployee(Employee employee, int id) {
-        employeeRepository.saveAndFlush(employee);
+        Optional<Employee> employees = employeeRepository.findById(id);
+        Employee employeeObj;
+
+        if(employees.isPresent()) {
+            employeeObj = employees.get();
+
+            employeeObj.setLastName(employee.getLastName());
+            employeeObj.setFirstName(employee.getFirstName());
+            employeeObj.setBirthDate(employee.getBirthDate());
+            employeeObj.setPhoto(employee.getPhoto());
+            employeeObj.setNotes(employee.getNotes());
+
+            employeeRepository.saveAndFlush(employeeObj);
+
+            return Optional.of(employeeObj);
+
+        }
 
         return Optional.empty();
     }

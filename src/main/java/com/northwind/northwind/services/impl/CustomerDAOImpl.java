@@ -61,7 +61,7 @@ public class CustomerDAOImpl implements CustomerDAO {
             customerobj.setPostalCode(customer.getPostalCode());
             customerobj.setCountry(customer.getCountry());
 
-            customerRepository.saveAndFlush(customer);
+            customerRepository.saveAndFlush(customerobj);
 
             return Optional.of(customerobj);
         }

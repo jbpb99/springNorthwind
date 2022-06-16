@@ -38,7 +38,7 @@ public class Product implements Serializable {
     private String unit;
 
     @Column(name = "Price")
-    private String price;
+    private int price;
 
     @OneToMany(mappedBy = "product")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "product"})
@@ -84,11 +84,11 @@ public class Product implements Serializable {
         this.unit = unit;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

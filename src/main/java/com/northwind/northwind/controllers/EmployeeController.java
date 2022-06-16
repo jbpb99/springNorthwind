@@ -63,20 +63,33 @@ public class EmployeeController {
     @PostMapping
     @RequestMapping("/post")
     public Employee saveEmployee(@RequestBody Employee employeeBody) {
-        return null;
+        employeeDAO.saveAndFlush(employeeBody);
+
+        return employeeBody;
     }
 
     //Delete
     @DeleteMapping
     @RequestMapping("/delete/{id}")
     public Employee deleteEmployee(@PathVariable int id) {
+        employeeDAO.deleteById(id);
+
         return null;
     }
 
     //Update
     @PutMapping
     @RequestMapping("/update/{id}")
-    public Employee updateEmployee(@RequestBody Employee employeeBody, @PathVariable int id) {
+    public EmployeeDto updateEmployee(@RequestBody Employee employeeBody, @PathVariable int id) {
+        Optional<Employee> employees = employeeDAO.updateEmployee(employeeBody, id);
+        EmployeeDto employeeDto;
+
+        if(employees.isPresent()) {
+            employeeDto = dtoMapper.employeeDto(employees.get());
+
+            return employeeDto;
+        }
+
         return null;
     }
 }
