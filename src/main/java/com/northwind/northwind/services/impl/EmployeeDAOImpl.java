@@ -31,7 +31,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     //Delete
     @Override
     public Employee deleteById(int id) {
-        employeeRepository.deleteById(id);
+        employeeRepository.changeActive(id);
 
         return null;
     }

@@ -34,6 +34,9 @@ public class Employee implements Serializable {
     @Column(name = "Notes")
     private String notes;
 
+    @Column(name = "active")
+    private short active;
+
     //List to bring the orders
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "employee"})
@@ -93,5 +96,13 @@ public class Employee implements Serializable {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public short getActive() {
+        return active;
+    }
+
+    public void setActive(short active) {
+        this.active = active;
     }
 }

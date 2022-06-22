@@ -31,8 +31,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 
     @Override
-    public Category deleteById(int id) {
-        customerRepository.deleteById(id);
+    public Customer deleteById(int id) {
+        customerRepository.changeActive(id);
 
         return null;
     }
