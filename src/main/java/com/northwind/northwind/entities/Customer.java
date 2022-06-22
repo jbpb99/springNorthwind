@@ -36,8 +36,11 @@ public class Customer {
     @Column(name = "country")
     private String country;
 
+    @Column(name = "active")
+    private short active;
+
     //List to get all the orders by customer
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "customer"})
     private List<Order> orders;
 

@@ -1,5 +1,6 @@
 package com.northwind.northwind.services;
 
+import com.northwind.northwind.dto.OrderDetailDto;
 import com.northwind.northwind.entities.OrderDetail;
 import com.northwind.northwind.repositories.OrderDetailRepository;
 
@@ -10,6 +11,8 @@ public interface OrderDetailDAO {
     List<OrderDetail> findAll();
 
     Optional <OrderDetail> findById(int id);
+
+    OrderDetail saveAndFlush(OrderDetailDto orderDetailDto);
 
     void deleteById(int id);
 

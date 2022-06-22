@@ -1,5 +1,6 @@
 package com.northwind.northwind.services;
 
+import com.northwind.northwind.dto.OrderDto;
 import com.northwind.northwind.entities.Order;
 import org.aspectj.weaver.ast.Or;
 
@@ -14,7 +15,7 @@ public interface OrderDAO {
     Optional<Order> findById(int id);
 
     //Post
-    List<Order> saveAndFlush(Order order);
+    Order saveAndFlush(OrderDto order);
 
     //Delete
     void deleteById(int id);

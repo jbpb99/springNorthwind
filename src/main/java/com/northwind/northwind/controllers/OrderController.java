@@ -59,7 +59,7 @@ public class OrderController {
     //Post
     @PostMapping
     @RequestMapping("/post")
-    public Order saveOrder(@RequestBody Order orderBody) {
+    public OrderDto saveOrder(@RequestBody OrderDto orderBody) {
         orderDAO.saveAndFlush(orderBody);
 
         return orderBody;

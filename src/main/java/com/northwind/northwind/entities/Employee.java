@@ -35,7 +35,7 @@ public class Employee implements Serializable {
     private String notes;
 
     //List to bring the orders
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "employee"})
     private List<Order> orders;
 

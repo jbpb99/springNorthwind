@@ -18,6 +18,7 @@ public class DTOMapperClass {
         orders.setOrder_id(order.getOrder_id());
         orders.setOrderDate(order.getOrderDate());
         orders.setEmployee(order.getEmployee().getEmployee_id());
+        orders.setCustomer(order.getCustomer().getCustomer_id());
 
         return orders;
     }

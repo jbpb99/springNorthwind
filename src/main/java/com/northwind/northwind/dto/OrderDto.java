@@ -14,6 +14,10 @@ public class OrderDto implements Serializable {
 
     private int employee;
 
+    private int customer;
+
+    private int shipper;
+
     public OrderDto() {
 
     }
@@ -40,5 +44,21 @@ public class OrderDto implements Serializable {
 
     public void setEmployee(int employee) {
         this.employee = employee;
+    }
+
+    public int getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(int customer) {
+        this.customer = customer;
+    }
+
+    public int getShipper() {
+        return shipper;
+    }
+
+    public void setShipper(int shipper) {
+        this.shipper = shipper;
     }
 }

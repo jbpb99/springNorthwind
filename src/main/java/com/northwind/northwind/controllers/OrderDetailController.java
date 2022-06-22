@@ -52,7 +52,7 @@ public class OrderDetailController {
     //Post
     @PostMapping
     @RequestMapping("/post")
-    public OrderDetail saveOrderDetail(@RequestBody OrderDetail orderDetailBody) {
+    public OrderDetailDto saveOrderDetail(@RequestBody OrderDetailDto orderDetailBody) {
         orderDetailDAO.saveAndFlush(orderDetailBody);
 
         return orderDetailBody;
