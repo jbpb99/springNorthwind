@@ -34,7 +34,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 
     @Override
     public void deleteById(int id) {
-        supplierRepository.deleteById(id);
+        supplierRepository.changeActive(id);
     }
 
     @Override

@@ -39,9 +39,13 @@ public class Supplier implements Serializable {
     @Column(name = "Phone")
     private String phone;
 
+    @Column(name = "active")
+    private short active;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "supplier"})
     private List<Product> products;
+
 
     public int getSupplier_id() {
         return supplier_id;
@@ -113,5 +117,13 @@ public class Supplier implements Serializable {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public short getActive() {
+        return active;
+    }
+
+    public void setActive(short active) {
+        this.active = active;
     }
 }

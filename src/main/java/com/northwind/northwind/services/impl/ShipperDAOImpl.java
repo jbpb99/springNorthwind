@@ -33,7 +33,7 @@ public class ShipperDAOImpl implements ShipperDAO {
 
     @Override
     public void deleteById(int id) {
-        shipperRepository.deleteById(id);
+        shipperRepository.changeActive(id);
     }
 
     @Override

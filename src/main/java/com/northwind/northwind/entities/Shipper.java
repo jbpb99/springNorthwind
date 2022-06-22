@@ -24,6 +24,9 @@ public class Shipper {
     @Column(name = "Phone")
     private String phone;
 
+    @Column(name = "active")
+    private short active;
+
     //list to bring the orders by shipper
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "shipper", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "shipper"})
@@ -59,5 +62,13 @@ public class Shipper {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public short getActive() {
+        return active;
+    }
+
+    public void setActive(short active) {
+        this.active = active;
     }
 }
