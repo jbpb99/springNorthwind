@@ -26,7 +26,7 @@ public class Category implements Serializable {
     @Column(name = "Description")
     private String description;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "category", "orderDetails"})
     private List<Product> products;
 

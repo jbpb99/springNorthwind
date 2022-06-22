@@ -39,7 +39,7 @@ public class Order {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "orders"})
     private Shipper shipper;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "order"})
     private List<OrderDetail> orderDetails;
 

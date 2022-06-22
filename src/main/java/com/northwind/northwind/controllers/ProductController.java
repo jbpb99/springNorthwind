@@ -51,7 +51,7 @@ public class ProductController {
     //Post
     @PostMapping
     @RequestMapping("/post/")
-    public Product saveProduct(@RequestBody Product productBody) {
+    public ProductDto saveProduct(@RequestBody ProductDto productBody) {
         productDAO.saveAndFlush(productBody);
 
         return productBody;

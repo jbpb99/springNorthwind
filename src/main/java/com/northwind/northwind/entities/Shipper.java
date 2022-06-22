@@ -3,6 +3,7 @@ package com.northwind.northwind.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.util.List;
@@ -24,7 +25,7 @@ public class Shipper {
     private String phone;
 
     //list to bring the orders by shipper
-    @OneToMany(mappedBy = "shipper")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "shipper", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "shipper"})
     private List<Order> orders;
 

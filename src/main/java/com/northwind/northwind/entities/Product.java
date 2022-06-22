@@ -40,7 +40,7 @@ public class Product implements Serializable {
     @Column(name = "Price")
     private int price;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "product"})
     private List<OrderDetail> orderDetails;
 

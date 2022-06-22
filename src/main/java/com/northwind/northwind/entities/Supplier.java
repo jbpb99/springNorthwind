@@ -39,7 +39,7 @@ public class Supplier implements Serializable {
     @Column(name = "Phone")
     private String phone;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "supplier"})
     private List<Product> products;
 
