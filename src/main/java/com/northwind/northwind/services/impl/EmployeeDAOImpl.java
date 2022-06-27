@@ -56,7 +56,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             employeeObj.setLastName(employee.getLastName());
             employeeObj.setFirstName(employee.getFirstName());
             employeeObj.setBirthDate(employee.getBirthDate());
-            employeeObj.setPhoto(employee.getPhoto());
             employeeObj.setNotes(employee.getNotes());
 
             employeeRepository.saveAndFlush(employeeObj);

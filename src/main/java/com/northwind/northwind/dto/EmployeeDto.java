@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -19,18 +20,15 @@ public class EmployeeDto implements Serializable {
     @JsonProperty("firstName")
     private final String firstName;
     @JsonProperty("birthDate")
-    private final LocalDateTime birthDate;
-    @JsonProperty("photo")
-    private final String photo;
+    private final LocalDate birthDate;
     @JsonProperty("notes")
     private final String notes;
 
-    public EmployeeDto(int employee_id, String lastName, String firstName, LocalDateTime birthDate, String photo, String notes) {
+    public EmployeeDto(int employee_id, String lastName, String firstName, LocalDate birthDate, String notes) {
         this.employee_id = employee_id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.birthDate = birthDate;
-        this.photo = photo;
         this.notes = notes;
     }
 }

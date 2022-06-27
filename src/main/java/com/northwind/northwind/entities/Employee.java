@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Table(name = "Employees")
@@ -26,10 +28,7 @@ public class Employee implements Serializable {
     private String firstName;
 
     @Column(name = "birthdate")
-    private LocalDateTime birthDate;
-
-    @Column(name = "Photo")
-    private String photo;
+    private LocalDate birthDate;
 
     @Column(name = "Notes")
     private String notes;
@@ -66,20 +65,12 @@ public class Employee implements Serializable {
         this.firstName = firstName;
     }
 
-    public LocalDateTime getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDateTime birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
     }
 
     public String getNotes() {
